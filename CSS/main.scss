@@ -1,0 +1,309 @@
+@import "reset";
+@import "grid";
+@import "https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poiret+One";
+
+
+//colors
+$color_friar_gray_approx: hsla(0, 0.79%, 49.41%, 1);
+$color_fuscous_gray_approx: hsla(0, 0%, 33.33%, 1);
+$color_mine_shaft_approx: hsla(0, 0%, 20%, 1);
+$color_school_bus_yellow_approx: hsla(51.06, 100%, 50%, 1);
+$color_white_approx: hsla(200, 100%, 99.41%, 1);
+$black_75: hsla(0, 0%, 0%, 0.75);
+$color_log_cabin_approx: hsla(0, 0%, 12.94%, 1);
+$color_tall_poppy_approx: hsla(0, 65%, 44%, 1);
+$color_iron_approx: hsla(0, 1.27%, 84.51%, 1);
+$color_school_bus_yellow_80_approx: hsla(51.06, 100%, 50%, 0.8);
+$color_cararra_approx: hsla(0, 0%, 92.16%, 1);
+$color_tundora_approx: hsla(0, 0%, 26.67%, 1);
+$white: hsla(0, 0%, 100%, 1);
+
+//fonts
+$font_0: 'Open Sans';
+$font_1: 'sans-serif';
+$font_2: 'Open Sans';
+$font_3: 'sans-serif';
+
+//urls
+$url_0: url('../images/background.png');
+
+//@extend-elements
+//original selectors
+//h1, h2
+%extend_1 {
+	color: $color_friar_gray_approx;
+	margin: 1em 0;
+	line-height: 1em;
+	font-weight: 700;
+	font-family: $font_2, $font_3;
+}
+
+//original selectors
+//p, ul, li
+%extend_2 {
+	color: $color_fuscous_gray_approx;
+	letter-spacing: 0.002rem;
+	line-height: 1.5em;
+}
+
+//original selectors
+//textarea, input
+%extend_3 {
+	display: block;
+	outline: none;
+	resize: none;
+	font-family: inherit;
+	line-height: 1.4;
+	font-size: inherit;
+	padding: 0.4rem;
+	border: none;
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: 2px 2px 5px 0 $black_75;
+}
+
+
+h1 {
+	@extend %extend_1;
+	font-size: 3em;
+}
+h2 {
+	@extend %extend_1;
+}
+p {
+	@extend %extend_2;
+	padding: 0.5rem 0;
+	> a {
+		color: $color_school_bus_yellow_approx;
+		background-color: $color_friar_gray_approx;
+		text-decoration: none;
+		&:hover {
+			color: $color_friar_gray_approx;
+			background-color: $color_school_bus_yellow_approx;
+		}
+	}
+}
+ul {
+	@extend %extend_2;
+}
+li {
+	@extend %extend_2;
+}
+strong {
+	color: $color_mine_shaft_approx;
+	font-weight: 700;
+}
+hr {
+	height: 0.2rem;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), $color_school_bus_yellow_approx, rgba(0, 0, 0, 0));
+	border: none;
+}
+body {
+	font-family: $font_0, $font_1;
+	line-height: 1.5;
+	background: $color_white_approx;
+	overflow-x: hidden;
+}
+th {
+	font-weight: 900;
+}
+img {
+	max-width: 100%;
+}
+.mobile-navigation {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 0;
+}
+.nav-item {
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: inset 14px 3px 0 -3px $black_75;
+	a {
+		display: block;
+		padding: 1em;
+		color: $color_log_cabin_approx;
+		text-decoration: none;
+		//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+		transition: color 0.2s, background 0.2s;
+		&:hover {
+			background: $color_school_bus_yellow_approx;
+		}
+	}
+}
+.nav-item-selected {
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: inset 14px 3px 0 -3px $color_school_bus_yellow_approx;
+}
+.nav-trigger {
+	position: absolute;
+	clip: rect(0, 0, 0, 0);
+	+ label {
+		//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+		transition: left 0.2s;
+	}
+	&:checked {
+		+ label {
+			left: 215px;
+		}
+		~ .site-wrap {
+			left: 200px;
+		}
+	}
+}
+label[for="nav-trigger"] {
+	position: fixed;
+	left: 15px;
+	top: 15px;
+	z-index: 2;
+}
+.site-wrap {
+	//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+	transition: left 0.2s;
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: inset 0 0 86px 69px $color_cararra_approx;
+}
+nav {
+	display: flex;
+	justify-content: space-between;
+	img {
+		width: 15rem;
+		height: 100%;
+		margin: 1rem;
+	}
+}
+.desktop-navigation {
+	margin-top: -1rem;
+	background-color: $color_iron_approx;
+	padding: 0 4rem;
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: 16px 7px 12px 0 $color_log_cabin_approx;
+}
+.desktop-navigation-list {
+	display: flex;
+	align-items: stretch;
+	margin-right: -15px;
+	a {
+		display: inline-flex;
+		color: $color_log_cabin_approx;
+		font-size: 1.2rem;
+		text-decoration: none;
+		//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+		transition: color 0.2s, background 0.2s;
+		&:hover {
+			background: $color_school_bus_yellow_80_approx;
+		}
+	}
+}
+.desktop-nav-item {
+	font-size: inherit;
+	font-weight: 700;
+	display: flex;
+	align-items: stretch;
+	align-content: center;
+	padding: 0 1rem;
+	margin: auto;
+	text-align: center;
+	line-height: 5em;
+}
+.desktop-nav-item-selected {
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: inset 0 -14px 0 -1px $color_school_bus_yellow_approx;
+}
+.background-pattern {
+	min-height: 100vh;
+	background-image: $url_0;
+}
+textarea {
+	@extend %extend_3;
+}
+input {
+	@extend %extend_3;
+}
+button {
+	height: 2.5rem;
+	width: 7rem;
+	background: $color_tundora_approx;
+	color: $white;
+	font-size: inherit;
+	margin: 2em 0 1em;
+	&:focus {
+		outline: none;
+	}
+	&:active {
+		outline: $color_school_bus_yellow_approx auto 5px;
+	}
+	&:hover {
+		background-color: $color_school_bus_yellow_approx;
+		color: $color_tundora_approx;
+	}
+}
+@media(max-width: 768px) {
+	html {
+		font-size: 12px;
+	}
+	h1 {
+		font-size: 2rem;
+	}
+	h2 {
+		font-size: 1.5rem;
+	}
+	.desktop-navigation {
+		display: none;
+	}
+	.mobile-disappear {
+		display: none;
+	}
+	.mobile-appear {
+		display: block;
+	}
+	form {
+		margin-left: -4rem;
+	}
+}
+@media(min-width: 769px) and(max-width: 1199px) {
+	html {
+		font-size: 12px;
+	}
+	.desktop-navigation {
+		display: none;
+	}
+	.tablet-disappear {
+		display: none;
+	}
+	.tablet-appear {
+		display: block;
+	}
+}
+@media(min-width: 1200px) {
+	.site-wrap {
+		max-width: 1500px;
+		margin: auto;
+	}
+	.mobile-navigation {
+		display: none;
+	}
+	label[for="nav-trigger"] {
+		display: none;
+	}
+	.desktop-disappear {
+		display: none;
+	}
+	.desktop-appear {
+		display: block;
+	}
+	.nav-trigger:checked {
+		+ label {
+			left: 0;
+		}
+		~ .site-wrap {
+			left: 0;
+		}
+	}
+}
+form > input {
+	margin-bottom: 2rem;
+}
